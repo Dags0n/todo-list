@@ -18,9 +18,9 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY_TODOLIST, JSON.stringify(todoList));
   }, [todoList])
 
-  function handleAddTodo(event){
-    setTodoList(prevTodoList => [...prevTodoList, {id: uuidv4(), name: name, complete: false}])
-    setName('');
+  const handleAddTodo = () => {
+    setTodoList([...todoList, {id: uuidv4(), name: name, complete: false}]);
+    setName('');    
   }
 
   function toggleTodo(id){
@@ -33,7 +33,7 @@ function App() {
 
   const handleChangeName = (event) => setName(event.target.value);
 
-  function handleClean(){
+  const handleClean = () => {
     const todoNotComplete = todoList.filter(x => !x.complete);
     setTodoList(todoNotComplete);
   }
